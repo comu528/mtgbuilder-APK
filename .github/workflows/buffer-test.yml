@@ -43,7 +43,7 @@ jobs:
               + DOWNLOAD_URL,
 
               "統率者デッキ管理用Androidアプリ「統率者ビルダー」を作りました!\n\n"
-              "現在はAPK版を公開しています。\n"
+              "APKで公開しています。\n"
               "気になった方はぜひ使ってみてください。\n\n"
               + DOWNLOAD_URL
               + "\n\n#MTG #mtg",
@@ -53,7 +53,7 @@ jobs:
               + DOWNLOAD_URL
               + "\n\n#EDH #mtg",
 
-              "個人制作のMTG統率者デッキ管理アプリ「統率者ビルダー」を公開しています。\n\n"
+              "MTG統率者デッキ管理アプリ「統率者ビルダー」を公開しています。\n\n"
               "Android用APKはこちらからダウンロードできます。\n\n"
               + DOWNLOAD_URL,
 
@@ -96,12 +96,12 @@ jobs:
               + "\n\n#mtg",
 
               "MTGの統率者 / Commander向けAndroidアプリ「統率者ビルダー」公開!。\n\n"
-              "個人制作の非公式アプリです。\n\n"
+              "オフラインでのデッキ閲覧もできます!\n\n"
               + DOWNLOAD_URL
               + "\n\n#EDH #mtg",
 
               "スマホで統率者デッキを管理したい人向けに「統率者ビルダー」を作っています!\n\n"
-              "Android APK版を公開中です。\n\n"
+              "Android APKを公開中です。\n\n"
               + DOWNLOAD_URL,
 
               "MTG統率者ルール向けアプリ「統率者ビルダー」。\n\n"
@@ -112,11 +112,11 @@ jobs:
 
               "Android用のMTG統率者デッキ管理アプリを公開しています!\n\n"
               "「統率者ビルダー」\n\n"
-              "無料APK版はこちらから。\n"
+              "APKはこちらから。\n"
               + DOWNLOAD_URL,
 
               "MTG Commander / 統率者デッキ管理用アプリ「統率者ビルダー」を公開中!\n\n"
-              "現在Android APK版を公開しています。\n\n"
+              "現在Android APKを公開しています。\n\n"
               + DOWNLOAD_URL
               + "\n\n#mtg #EDH"
 
