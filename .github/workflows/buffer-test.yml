@@ -37,86 +37,88 @@ jobs:
 
           posts = [
 
-              "MTGの統率者デッキを作成・管理できるAndroidアプリ「mtgbuilder」を公開しました。\n\n"
-              "APK版を無料配布中です。\n"
-              "#MTG #EDH\n\n"
+              "MTGの統率者デッキを作成・管理できるAndroidアプリ「統率者ビルダー」を公開しました!\n\n"
+              "完全無料で使用できます!\n"
+              "#ntg #EDH\n\n"
               + DOWNLOAD_URL,
 
-              "統率者デッキ管理用Androidアプリ「mtgbuilder」を作りました。\n\n"
+              "統率者デッキ管理用Androidアプリ「統率者ビルダー」を作りました!\n\n"
               "現在はAPK版を公開しています。\n"
               "気になった方はぜひ使ってみてください。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#MTG #統率者",
+              + "\n\n#MTG #mtg",
 
-              "MTG Commander / EDH向けのAndroidアプリ「mtgbuilder」公開中です。\n\n"
-              "スマホで統率者デッキを管理したい方向け。\n\n"
+              "MTG Commander / EDH向けのAndroidアプリ「統率者ビルダー」公開中です。\n\n"
+              "オフラインでも閲覧ができます!\n\n"
               + DOWNLOAD_URL
-              + "\n\n#EDH #MTG",
+              + "\n\n#EDH #mtg",
 
-              "個人制作のMTG統率者デッキ管理アプリ「mtgbuilder」を公開しています。\n\n"
+              "個人制作のMTG統率者デッキ管理アプリ「統率者ビルダー」を公開しています。\n\n"
               "Android用APKはこちらからダウンロードできます。\n\n"
               + DOWNLOAD_URL,
 
               "統率者デッキをAndroidで管理するためのアプリを作りました。\n\n"
-              "アプリ名：mtgbuilder\n"
-              "現在APK版を無料公開中です。\n\n"
+              "アプリ名：統率者ビルダー\n"
+              "カード検索や欲しいものリスト追加もできます。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#統率者 #MTG",
+              + "\n\n#統率者 #mtg",
 
               "MTGのデッキ管理、スマホでやりたい人向け。\n\n"
-              "統率者用Androidアプリ「mtgbuilder」を個人開発しています。\n"
+              "統率者用Androidアプリ「統率者ビルダー」を個人開発しています。\n"
               "APK版公開中。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#EDH",
+              + "\n\n#mtg",
 
               "Android向けMTG統率者デッキ管理アプリ\n"
-              "「mtgbuilder」公開中です。\n\n"
-              "まだ開発中ですが、APKからインストールできます。\n\n"
+              "「統率者ビルダー」公開中です。\n\n"
+              "EDHRECの情報も日本語で閲覧できます!。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#MTG #Commander",
+              + "\n\n#mtg #統率者",
 
               "統率者プレイヤー向けにAndroidアプリを作ってみました。\n\n"
-              "mtgbuilder\n"
-              "MTG Commanderデッキの作成・管理用アプリです。\n\n"
+              "統率者ビルダー\n"
+              "MTG統率デッキの作成・管理用アプリです。\n\n"
               + DOWNLOAD_URL,
 
-              "Google Play公開に先駆けて、MTG統率者デッキ管理アプリ「mtgbuilder」のAPK版を公開しています。\n\n"
+              "MTG統率者デッキ管理アプリ「統率者ビルダー」のAPK版を公開しています。\n"
+              "EDHRECからのデッキコピーもできます"\n\n"
               + DOWNLOAD_URL
               + "\n\n#MTG #EDH",
 
-              "MTG Commanderのデッキ管理アプリ「mtgbuilder」を個人制作しています。\n\n"
+              "MTG 統率者のデッキ管理アプリ「統率者ビルダー」を個人制作しています。\n"
+              "日本語テキストでのカード検索もできます！\n"
               "Android版をAPKで配布していますので、興味があればどうぞ。\n\n"
               + DOWNLOAD_URL,
 
-              "統率者デッキを作ったり管理したりするためのAndroidアプリを公開しました。\n\n"
-              "mtgbuilder APK版はこちら。\n\n"
+              "統率者デッキを作ったり管理したり検索するためのAndroidアプリを公開しました。\n\n"
+              "APKはこちら。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#MTG",
+              + "\n\n#mtg",
 
-              "MTGの統率者 / Commander向けAndroidアプリ「mtgbuilder」公開中。\n\n"
+              "MTGの統率者 / Commander向けAndroidアプリ「統率者ビルダー」公開!。\n\n"
               "個人制作の非公式アプリです。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#EDH #Commander",
+              + "\n\n#EDH #mtg",
 
-              "スマホで統率者デッキを管理したい人向けに「mtgbuilder」を作っています。\n\n"
+              "スマホで統率者デッキを管理したい人向けに「統率者ビルダー」を作っています!\n\n"
               "Android APK版を公開中です。\n\n"
               + DOWNLOAD_URL,
 
-              "MTGプレイヤー向け個人制作アプリ「mtgbuilder」。\n\n"
-              "統率者デッキの作成・管理用Androidアプリです。\n"
+              "MTG統率者ルール向けアプリ「統率者ビルダー」。\n\n"
+              "統率者デッキの作成・カード検索アプリです。\n"
               "APKはこちら。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#MTG #統率者",
+              + "\n\n#mtg #統率者",
 
-              "Android用のMTG統率者デッキ管理アプリを公開しています。\n\n"
-              "mtgbuilder\n\n"
+              "Android用のMTG統率者デッキ管理アプリを公開しています!\n\n"
+              "「統率者ビルダー」\n\n"
               "無料APK版はこちらから。\n"
               + DOWNLOAD_URL,
 
-              "MTG Commander / 統率者デッキ管理用アプリ「mtgbuilder」を制作中。\n\n"
+              "MTG Commander / 統率者デッキ管理用アプリ「統率者ビルダー」を公開中!\n\n"
               "現在Android APK版を公開しています。\n\n"
               + DOWNLOAD_URL
-              + "\n\n#MTG #EDH"
+              + "\n\n#mtg #EDH"
 
           ]
 
