@@ -1,0 +1,130 @@
+name: Buffer X Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Post test message to X via Buffer
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: |
+          python3 <<'PY'
+          import os
+          import json
+          import urllib.request
+
+          API = "https://api.buffer.com"
+          TOKEN = os.environ["BUFFER_API_KEY"]
+
+          def graphql(query, variables=None):
+              body = json.dumps({
+                  "query": query,
+                  "variables": variables or {}
+              }).encode("utf-8")
+
+              req = urllib.request.Request(
+                  API,
+                  data=body,
+                  headers={
+                      "Content-Type": "application/json",
+                      "Authorization": f"Bearer {TOKEN}"
+                  },
+                  method="POST"
+              )
+
+              with urllib.request.urlopen(req) as response:
+                  result = json.loads(response.read().decode("utf-8"))
+
+              if "errors" in result:
+                  raise RuntimeError(result["errors"])
+
+              return result["data"]
+
+          # 1. Buffer organizationを取得
+          org_data = graphql("""
+          query GetOrganizations {
+            account {
+              organizations {
+                id
+                name
+              }
+            }
+          }
+          """)
+
+          organizations = org_data["account"]["organizations"]
+
+          if not organizations:
+              raise RuntimeError("Buffer organizationが見つかりません")
+
+          org_id = organizations[0]["id"]
+          print("Organization found:", organizations[0]["name"])
+
+          # 2. Xチャンネルを取得
+          channel_data = graphql("""
+          query GetChannels($orgId: OrganizationId!) {
+            channels(input: { organizationId: $orgId }) {
+              id
+              name
+              service
+            }
+          }
+          """, {
+              "orgId": org_id
+          })
+
+          twitter_channels = [
+              channel for channel in channel_data["channels"]
+              if channel["service"] == "twitter"
+          ]
+
+          if not twitter_channels:
+              raise RuntimeError("Bufferに接続されたXアカウントが見つかりません")
+
+          channel = twitter_channels[0]
+
+          print("X channel found:", channel["name"])
+
+          # 3. テスト投稿
+          message = ""テスト
+
+          GitHub Actions + Buffer APIからのテスト投稿です。
+
+          https://github.com/comu528/mtgbuilder-APK/releases/latest/download/mtgbuilder.apk"""
+
+          post_data = graphql("""
+          mutation CreatePost($input: CreatePostInput!) {
+            createPost(input: $input) {
+              ... on PostActionSuccess {
+                post {
+                  id
+                  text
+                  status
+                }
+              }
+              ... on MutationError {
+                message
+              }
+            }
+          }
+          """, {
+              "input": {
+                  "text": message,
+                  "channelId": channel["id"],
+                  "schedulingType": "automatic",
+                  "mode": "shareNow"
+              }
+          })
+
+          result = post_data["createPost"]
+
+          if "message" in result:
+              raise RuntimeError(result["message"])
+
+          print("SUCCESS")
+          print(result["post"])
+          PY
