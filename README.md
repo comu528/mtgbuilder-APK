@@ -21,10 +21,9 @@ Magic: The Gathering の「統率者戦（EDH / Commander）」専用に作ら�
 デッキリストのテキスト書き出し（日本語/英語）
 ♡ 欲しいものリスト
 気になるカード・購入予定のカードをハートに登録して枚数管理
+
 📴 オフライン対応
 カードデータを端末にダウンロードしておけば、圏外でもデッキ編集・検索が可能
-スクリーンショット
-<!-- docs/screenshots/ に画像を置いて差し替えてください --> <p> <img src="docs/screenshots/search.jpg" width="240"> <img src="docs/screenshots/deck.jpg" width="240"> <img src="docs/screenshots/edhrec.jpg" width="240"> </p>
 ダウンロード
 最新版APKは Releases からダウンロードできます。
 
