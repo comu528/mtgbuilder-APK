@@ -6,7 +6,7 @@ on:
 
   # 日本時間 9:17 / 13:17 / 17:17 / 21:17 に自動投稿
   schedule:
-    - cron: "17 9,13,17,21 * * *"
+    - cron: "55 17 * * *"
       timezone: "Asia/Tokyo"
 
 jobs:
