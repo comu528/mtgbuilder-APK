@@ -1,20 +1,20 @@
 name: mtgbuilder X Auto Post
 
 on:
-  # 手動でも実行できるように残しておく
+  # 手動実行も可能
   workflow_dispatch:
 
-  # 日本時間 9:17 / 13:17 / 17:17 / 21:17 に自動投稿
+  # 毎日3:37（日本時間）に翌日分をBufferへ予約
   schedule:
-    - cron: "55 17 * * *"
+    - cron: "37 3 * * *"
       timezone: "Asia/Tokyo"
 
 jobs:
-  post:
+  schedule-posts:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Post mtgbuilder to X via Buffer
+      - name: Schedule tomorrow posts via Buffer
         env:
           BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
 
@@ -22,8 +22,10 @@ jobs:
           python3 <<'PY'
           import os
           import json
-          import time
           import urllib.request
+
+          from datetime import datetime, date, time, timedelta, timezone
+          from zoneinfo import ZoneInfo
 
           API = "https://api.buffer.com"
           TOKEN = os.environ["BUFFER_API_KEY"]
@@ -31,9 +33,10 @@ jobs:
           DOWNLOAD_URL = "https://github.com/comu528/mtgbuilder-APK/releases/latest/download/mtgbuilder.apk"
           README_URL = "https://github.com/comu528/mtgbuilder-APK"
 
+          JST = ZoneInfo("Asia/Tokyo")
+
           # --------------------------------
           # 自動投稿する文章
-          # ここは好きに増やしたり変更してOK
           # --------------------------------
 
           posts = [
@@ -80,6 +83,7 @@ jobs:
               "統率者ビルダー\n"
               "MTG統率デッキの作成・管理用アプリです。\n\n"
               + DOWNLOAD_URL,
+              + "\n\n#mtg #統率者",
 
               "MTG統率者デッキ管理アプリ「統率者ビルダー」のAPK版を公開しています。\n"
               "EDHRECからのデッキコピーもできます！\n\n"
@@ -90,6 +94,7 @@ jobs:
               "日本語テキストでのカード検索もできます！\n"
               "Android版をAPKで配布していますので、興味があればどうぞ。\n\n"
               + DOWNLOAD_URL,
+              + "\n\n#mtg #統率者",
 
               "統率者デッキを作ったり管理したり検索するためのAndroidアプリを公開しました。\n\n"
               "APKはこちら。\n\n"
@@ -104,6 +109,7 @@ jobs:
               "スマホで統率者デッキを管理したい人向けに「統率者ビルダー」を作っています!\n\n"
               "Android APKを公開中です。\n\n"
               + DOWNLOAD_URL,
+              + "\n\n#EDH #mtg",
 
               "MTG統率者ルール向けアプリ「統率者ビルダー」。\n\n"
               "統率者デッキの作成・カード検索アプリです。\n"
@@ -115,6 +121,7 @@ jobs:
               "「統率者ビルダー」\n\n"
               "APKはこちらから。\n"
               + DOWNLOAD_URL,
+              + "\n\n#EDH #mtg",
 
               "MTG Commander / 統率者デッキ管理用アプリ「統率者ビルダー」を公開中!\n\n"
               "現在Android APKを公開しています。\n\n"
@@ -123,18 +130,18 @@ jobs:
 
           ]
 
+          # 全投稿の最後にREADMEを追加
+          posts = [
+              post
+              + "\n\nアプリ詳細・導入方法はこちら\n"
+              + README_URL
+              for post in posts
+          ]
+
+
           # --------------------------------
-          # 投稿文を順番にローテーション
-          # 4時間ごとに次の文章へ
+          # Buffer API
           # --------------------------------
-
-          index = int(time.time() // (4 * 60 * 60)) % len(posts)
-          message = posts[index]
-
-          # README URLを全投稿の最後に自動追加
-          message += "\n\nアプリ詳細・導入方法はこちら\n" + README_URL
-
-          print("Selected post:", index + 1, "/", len(posts))
 
           def graphql(query, variables=None):
 
@@ -195,7 +202,7 @@ jobs:
 
 
           # --------------------------------
-          # Bufferに接続されているXを取得
+          # Xチャンネル取得
           # --------------------------------
 
           channel_data = graphql("""
@@ -210,19 +217,16 @@ jobs:
               "orgId": org_id
           })
 
-
           twitter_channels = [
               channel
               for channel in channel_data["channels"]
               if channel["service"] == "twitter"
           ]
 
-
           if not twitter_channels:
               raise RuntimeError(
                   "Bufferに接続されたXアカウントが見つかりません"
               )
-
 
           channel = twitter_channels[0]
 
@@ -233,10 +237,29 @@ jobs:
 
 
           # --------------------------------
-          # Xへ即時投稿
+          # 翌日の4投稿を予約
           # --------------------------------
 
-          post_data = graphql("""
+          now_jst = datetime.now(JST)
+          target_day = now_jst.date() + timedelta(days=1)
+
+          posting_times = [
+              time(9, 11),
+              time(12, 11),
+              time(18, 11),
+              time(22, 11)
+          ]
+
+          # 2026/8/15を投稿1番目の開始日にする
+          start_day = date(2026, 8, 15)
+
+          day_offset = (target_day - start_day).days
+          start_index = (day_offset * 4) % len(posts)
+
+          print("Scheduling posts for:", target_day)
+
+
+          mutation = """
           mutation CreatePost($input: CreatePostInput!) {
             createPost(input: $input) {
 
@@ -244,6 +267,7 @@ jobs:
                 post {
                   id
                   text
+                  dueAt
                   status
                 }
               }
@@ -254,31 +278,64 @@ jobs:
 
             }
           }
-          """, {
-
-              "input": {
-                  "text": message,
-                  "channelId": channel["id"],
-                  "schedulingType": "automatic",
-                  "mode": "shareNow"
-              }
-
-          })
+          """
 
 
-          result = post_data["createPost"]
+          for slot, post_time in enumerate(posting_times):
 
+              post_index = (start_index + slot) % len(posts)
+              message = posts[post_index]
 
-          if "message" in result:
-              raise RuntimeError(
-                  result["message"]
+              # 日本時間 → UTCへ変換
+              scheduled_jst = datetime.combine(
+                  target_day,
+                  post_time,
+                  tzinfo=JST
+              )
+
+              scheduled_utc = scheduled_jst.astimezone(
+                  timezone.utc
+              )
+
+              due_at = (
+                  scheduled_utc
+                  .isoformat(timespec="seconds")
+                  .replace("+00:00", "Z")
+              )
+
+              print(
+                  f"Post {post_index + 1}/{len(posts)} "
+                  f"-> {scheduled_jst.isoformat()} "
+                  f"({due_at})"
+              )
+
+              post_data = graphql(
+                  mutation,
+                  {
+                      "input": {
+                          "text": message,
+                          "channelId": channel["id"],
+                          "schedulingType": "automatic",
+                          "mode": "customScheduled",
+                          "dueAt": due_at
+                      }
+                  }
+              )
+
+              result = post_data["createPost"]
+
+              if "message" in result:
+                  raise RuntimeError(
+                      result["message"]
+                  )
+
+              print(
+                  "Scheduled:",
+                  result["post"]["id"],
+                  result["post"]["dueAt"]
               )
 
 
-          print("SUCCESS")
-          print(
-              "Post ID:",
-              result["post"]["id"]
-          )
+          print("SUCCESS: 4 posts scheduled.")
 
           PY
