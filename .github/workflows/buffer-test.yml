@@ -29,6 +29,7 @@ jobs:
           TOKEN = os.environ["BUFFER_API_KEY"]
 
           DOWNLOAD_URL = "https://github.com/comu528/mtgbuilder-APK/releases/latest/download/mtgbuilder.apk"
+          README_URL = "https://github.com/comu528/mtgbuilder-APK"
 
           # --------------------------------
           # 自動投稿する文章
@@ -39,7 +40,7 @@ jobs:
 
               "MTGの統率者デッキを作成・管理できるAndroidアプリ「統率者ビルダー」を公開しました!\n\n"
               "完全無料で使用できます!\n"
-              "#ntg #EDH\n\n"
+              "#MTG #EDH\n\n"
               + DOWNLOAD_URL,
 
               "統率者デッキ管理用Androidアプリ「統率者ビルダー」を作りました!\n\n"
@@ -129,6 +130,9 @@ jobs:
 
           index = int(time.time() // (4 * 60 * 60)) % len(posts)
           message = posts[index]
+
+          # README URLを全投稿の最後に自動追加
+          message += "\n\nアプリ詳細・導入方法はこちら\n" + README_URL
 
           print("Selected post:", index + 1, "/", len(posts))
 
