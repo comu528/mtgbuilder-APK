@@ -89,7 +89,8 @@ jobs:
 
           print("X channel found:", channel["name"])
 
-message = "mtgbuilder 自動投稿テスト\n\nGitHub Actions + Buffer APIからのテスト投稿です。\n\nhttps://github.com/comu528/mtgbuilder-APK/releases/latest/download/mtgbuilder.apk"
+          # 3. テスト投稿
+          message = "mtgbuilder 自動投稿テスト\n\nGitHub Actions + Buffer APIからのテスト投稿です。\n\nhttps://github.com/comu528/mtgbuilder-APK/releases/latest/download/mtgbuilder.apk"
 
           post_data = graphql("""
           mutation CreatePost($input: CreatePostInput!) {
