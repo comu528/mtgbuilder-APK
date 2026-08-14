@@ -42,99 +42,80 @@ jobs:
           posts = [
 
               "MTGの統率者デッキを作成・管理できるAndroidアプリ「統率者ビルダー」を公開しました!\n\n"
-              "完全無料で使用できます!\n"
-              "#MTG #EDH\n\n"
-              + DOWNLOAD_URL,
+              "完全無料で使用できます!\n\n"
+              "#MTG #EDH",
 
               "統率者デッキ管理用Androidアプリ「統率者ビルダー」を作りました!\n\n"
               "APKで公開しています。\n"
               "気になった方はぜひ使ってみてください。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#MTG #mtg",
+              "#MTG #mtg",
 
               "MTG Commander / EDH向けのAndroidアプリ「統率者ビルダー」公開中です。\n\n"
               "オフラインでも閲覧ができます!\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#EDH #mtg",
+              "#EDH #mtg",
 
               "MTG統率者デッキ管理アプリ「統率者ビルダー」を公開しています。\n\n"
-              "Android用APKはこちらからダウンロードできます。\n\n"
-              + DOWNLOAD_URL,
+              "Android用APKを無料で公開しています。"
+              "#mtg #統率者",
 
               "統率者デッキをAndroidで管理するためのアプリを作りました。\n\n"
               "アプリ名：統率者ビルダー\n"
               "カード検索や欲しいものリスト追加もできます。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#統率者 #mtg",
+              "#統率者 #mtg",
 
               "MTGのデッキ管理、スマホでやりたい人向け。\n\n"
               "統率者用Androidアプリ「統率者ビルダー」を個人開発しています。\n"
               "APK版公開中。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#mtg",
+              "#mtg",
 
               "Android向けMTG統率者デッキ管理アプリ\n"
               "「統率者ビルダー」公開中です。\n\n"
-              "EDHRECの情報も日本語で閲覧できます!。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#mtg #統率者",
+              "EDHRECの情報も日本語で閲覧できます!\n\n"
+              "#mtg #統率者",
 
               "統率者プレイヤー向けにAndroidアプリを作ってみました。\n\n"
               "統率者ビルダー\n"
-              "MTG統率デッキの作成・管理用アプリです。\n\n"
-              + DOWNLOAD_URL,
-              + "\n\n#mtg #統率者",
+              "MTG統率者デッキの作成・管理用アプリです。",
 
-              "MTG統率者デッキ管理アプリ「統率者ビルダー」のAPK版を公開しています。\n"
+              "MTG統率者デッキ管理アプリ「統率者ビルダー」のAPK版を公開しています。\n\n"
               "EDHRECからのデッキコピーもできます！\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#MTG #EDH",
+              "#mtg #EDH",
 
-              "MTG 統率者のデッキ管理アプリ「統率者ビルダー」を個人制作しています。\n"
+              "MTG 統率者のデッキ管理アプリ「統率者ビルダー」を個人制作しています。\n\n"
               "日本語テキストでのカード検索もできます！\n"
-              "Android版をAPKで配布していますので、興味があればどうぞ。\n\n"
-              + DOWNLOAD_URL,
-              + "\n\n#mtg #統率者",
+              "Android版をAPKで配布していますので、興味があればどうぞ。",
 
               "統率者デッキを作ったり管理したり検索するためのAndroidアプリを公開しました。\n\n"
-              "APKはこちら。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#mtg",
+              "#mtg",
 
-              "MTGの統率者 / Commander向けAndroidアプリ「統率者ビルダー」公開!。\n\n"
+              "MTGの統率者 / Commander向けAndroidアプリ「統率者ビルダー」公開中!\n\n"
               "オフラインでのデッキ閲覧もできます!\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#EDH #mtg",
+              "#EDH #mtg",
 
               "スマホで統率者デッキを管理したい人向けに「統率者ビルダー」を作っています!\n\n"
-              "Android APKを公開中です。\n\n"
-              + DOWNLOAD_URL,
-              + "\n\n#EDH #mtg",
+              "Android APKを公開中です。",
 
               "MTG統率者ルール向けアプリ「統率者ビルダー」。\n\n"
-              "統率者デッキの作成・カード検索アプリです。\n"
-              "APKはこちら。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#mtg #統率者",
+              "統率者デッキの作成・カード検索アプリです。\n\n"
+              "#mtg #統率者",
 
               "Android用のMTG統率者デッキ管理アプリを公開しています!\n\n"
-              "「統率者ビルダー」\n\n"
-              "APKはこちらから。\n"
-              + DOWNLOAD_URL,
-              + "\n\n#EDH #mtg",
+              "「統率者ビルダー」",
 
               "MTG Commander / 統率者デッキ管理用アプリ「統率者ビルダー」を公開中!\n\n"
               "現在Android APKを公開しています。\n\n"
-              + DOWNLOAD_URL
-              + "\n\n#mtg #EDH"
+              "#mtg #EDH"
 
           ]
 
-          # 全投稿の最後にREADMEを追加
+          # --------------------------------
+          # APK・READMEリンクを全投稿に追加
+          # --------------------------------
+
           posts = [
-              post
-              + "\n\nアプリ詳細・導入方法はこちら\n"
-              + README_URL
+              f"{post}\n\n"
+              f"APKダウンロード\n{DOWNLOAD_URL}\n\n"
+              f"アプリ詳細・導入方法はこちら\n{README_URL}"
               for post in posts
           ]
 
